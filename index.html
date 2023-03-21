@@ -17,3 +17,83 @@
 	<script src="script.js"></script>
 </body>
 </html>
+
+// Funkcja do tworzenia nowych receptur
+function addRecipe() {
+  const recipeName = document.getElementById("addRecipeName").value;
+  const recipeIngredients = {};
+  const ingredientList = document.getElementById("addRecipeIngredientList");
+  const rows = ingredientList.querySelectorAll("tr");
+  for (let i = 1; i < rows.length - 1; i++) {
+    const cells = rows[i].querySelectorAll("td");
+    const ingredientName = cells[0].querySelector("input").value;
+    const ingredientAmount = parseFloat(cells[1].querySelector("input").value);
+    recipeIngredients[ingredientName] = ingredientAmount;
+  }
+  recipes[recipeName] = recipeIngredients;
+  document.getElementById("addRecipeForm").reset();
+  document.getElementById("formContainer").innerHTML = "";
+  showMenu();
+  alert("Receptura została dodana.");
+}
+
+h1 {
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 0.5em;
+}
+
+#menu {
+	margin-bottom: 1em;
+}
+
+button {
+	font-size: 1.2em;
+	margin-right: 1em;
+}
+
+#formContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+form {
+	display: none;
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+input[type="text"], input[type="number"] {
+	font-size: 1em;
+	padding: 0.25em;
+	margin-bottom: 0.5em;
+}
+
+select {
+	font-size: 1em;
+	padding: 0.25em;
+	margin-bottom: 0.5em;
+}
+
+button[type="submit"] {
+	font-size: 1.2em;
+	margin-top: 1em;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 0.25em;
+	border: 1px solid black;
+}
+
+th {
+	background-color: #eee;
+}
